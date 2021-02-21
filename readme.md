@@ -11,7 +11,7 @@ This project contains a CRUD for SQL Server DB using [Typescript](https://www.ty
 
 ## Database setup
 
-At your SQL Server instance, create a new DB and create a simple table that will contains 3 columns: id (integer and auto incremental), name (varchar) and description. You can use the following SQL Server Script:
+At your SQL Server instance, create a new DB and create a simple table that will contains 4 columns: id, name, description and enabled. You can use the following SQL Server Script:
 
 ```SQL
 SET ANSI_NULLS ON
@@ -19,15 +19,15 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Departments](
-	[id] [int] IDENTITY(1,1) NOT NULL,
-	[name] [varchar](255) NOT NULL,
+    [id] [int] IDENTITY(1,1) NOT NULL,
+    [name] [varchar](255) NOT NULL,
     [description] [varchar](255) NOT NULL,
     [enabled] [bit] NOT NULL DEFAULT 1
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Departments] ADD PRIMARY KEY CLUSTERED 
 (
-	[id] ASC
+    [id] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ```
@@ -35,6 +35,7 @@ GO
 ### Configurations required in your local environment
 
 #### Alternative 1
+
 Be sure that in your local environment you have the file called **.env**. Within that file you should add the port where your REST API will be available and DB connection data, like this sample:
 
 ```ENV
@@ -45,6 +46,7 @@ DB_PASSWORD=<YourDbPass>
 DB_HOST=<YourDbHost>
 DB_PORT=1433
 ```
+
 #### Alternative 2
 
 Hard code your configurations at the file **config.ts**.
