@@ -18,8 +18,8 @@ class Server {
         try {
             await db.authenticate();
             console.log('Database connected');
-        } catch (error) {
-            throw new Error( error );
+        } catch (error: any) {
+            console.error(error, 'Error connecting to DB');
         }
     }
 
